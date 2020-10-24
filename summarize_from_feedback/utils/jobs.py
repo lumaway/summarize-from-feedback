@@ -35,6 +35,7 @@ def launch(job: Job):
                 "mpiexec",
                 "-n",
                 str(H.mpi),
+                "--allow-run-as-root",
                 "python",
                 "-c",
                 'import sys; import pickle; pickle.loads(open("/tmp/pickle_fn", "rb").read())()',
