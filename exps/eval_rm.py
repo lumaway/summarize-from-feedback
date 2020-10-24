@@ -16,6 +16,13 @@ def experiment_definitions():
         bind("input_path", "https://openaipublic.blob.core.windows.net/summarize-from-feedback/samples/sup4_ppo_rm4"),
     )
 
+    custom_eval = combos(
+        bind_nested("task", utils.custom_task),
+        bind("mpi", 1),
+        bind_nested("reward_model_spec", utils.random_teeny_model_spec()),
+        bind("input_path", "summarize-from-feedback/samples/test"),
+    )
+
     test = combos(
         bind_nested("task", utils.test_task),
         bind_nested("reward_model_spec", utils.random_teeny_model_spec()),
