@@ -12,6 +12,7 @@ from summarize_from_feedback.datasets.tldr import (
     tldr_filtered_generator,
     tldr_filtered_queries_generator,
 )
+from summarize_from_feedback.datasets.custom import custom_data_generator
 from summarize_from_feedback.utils import even_more_itertools
 
 _DATASETS = {
@@ -21,6 +22,8 @@ _DATASETS = {
     "cnndm": cnndm_generator,
     "cnndm_filtered": cnndm_filtered_generator,
     "cnndm_filtered_short": cnndm_filtered_generator_short,
+    # Add your datasets to this dict like so
+    "custom_dataset": custom_data_generator,
 }
 
 

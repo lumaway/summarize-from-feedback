@@ -27,6 +27,15 @@ def experiment_definitions():
         bind("sample.temperature", 0.01),
     )
 
+    custom_experiment = combos(
+        bind_nested("model_spec", utils.sup4_ppo_rm4()),
+        bind_nested("task", utils.custom_task),
+        bind("query_dataset_split", "valid"),
+        bind("mpi", 1),
+        bind("num_queries", 128),
+        bind("sample.temperature", 0.01),
+    )
+
     test = combos(
         bind_nested("task", utils.test_task),
         bind_nested("model_spec", utils.random_teeny_model_spec()),

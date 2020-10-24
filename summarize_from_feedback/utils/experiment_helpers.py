@@ -207,6 +207,20 @@ tldr_task = combos(
     bind("response.ref_format_str", " {reference}"),  # add a leading space
 )
 
+custom_task = combos(
+    bind(
+        "query.format_str", "SUBREDDIT: r/{subreddit}\n\nTITLE: {title}\n\nPOST: {post}\n\nTL;DR:"
+    ),
+    bind("query.dataset", "custom_dataset"),
+    bind("query.length", 512),
+    bind("response.length", 48),
+    bind("query.truncate_text", "\n"),
+    bind("query.truncate_field", "post"),
+    bind("query.pad_side", "left"),
+    bind("response.truncate_token", 50256),  # endoftext
+    bind("response.ref_format_str", " {reference}"),  # add a leading space
+)
+
 # tldr_zero_shot_format_str = "SUBREDDIT: r/{subreddit}\n\nTITLE: {title}\n\nPOST: {post}\n\nTL;DR:"
 tldr_zero_shot_format_str = "Subreddit: r/{subreddit}\n\nTitle: {title}\n\n{post}\n\nTL;DR:"
 tldr_zero_shot_examples = [
